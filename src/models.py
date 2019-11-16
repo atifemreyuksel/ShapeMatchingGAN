@@ -174,7 +174,7 @@ class GlyphGenerator(nn.Module):
 class myBlur(nn.Module):
     def __init__(self, kernel_size=121, channels=3):
         super(myBlur, self).__init__()
-        kernel_size = int(int(kernel_size)/2*2)+1
+        #kernel_size = int(int(kernel_size)/2*2)+1
         self.kernel_size=kernel_size
         self.channels = channels
         self.GF = nn.Conv2d(in_channels=channels, out_channels=channels,
@@ -183,7 +183,7 @@ class myBlur(nn.Module):
         x_grid = x_cord.repeat(self.kernel_size).view(self.kernel_size, self.kernel_size)
         y_grid = x_grid.t()
         self.xy_grid = torch.stack([x_grid, y_grid], dim=-1)
-        self.mean = (self.kernel_size - 1)/2
+        self.mean = int((self.kernel_size - 1)/2)
         self.diff = -torch.sum((self.xy_grid - self.mean)**2., dim=-1)
         self.gaussian_filter = nn.Conv2d(in_channels=self.channels, out_channels=self.channels,
                                     kernel_size=self.kernel_size, groups=self.channels, bias=False)
