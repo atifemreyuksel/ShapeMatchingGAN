@@ -35,7 +35,7 @@ It is provided for educational/research purpose only. Please consider citing our
 ## Usage: 
 
 #### Prerequisites
-- Python 2.7
+- Python 3.6+
 - Pytorch 1.1.0
 - matplotlib
 - scipy
@@ -176,7 +176,7 @@ Have fun :-)
 
 - Style image preparation 
   - Applicable style types: To make the stylized text easy to recognize, it is desirable to have a certain distinction between the text and the background. If the texture has no distinct shape, the generated stylized text will be mixed with the background. Therefore, textures with distinct shapes as the reference style are recommended.
-  - Prepare (X,Y): Use Image Matting Algorithm or the Quick Selection Tool in Photoshop to obtain the black and white structure map X (i.e. foreground mask) of the style image Y. 
+  - Prepare (X,Y): Use Image Matting Algorithm or the Quick Selection Tool in Photoshop to obtain the black and white structure map X (i.e. foreground mask) of the style image Y. If you don't have Photoshop program and don't want to spend time for creating structure map, you can generate your white and black masks in even preview application (if you want to train only one style, the easiest way is this for me).
   - Prepare distance-based structure map: Use utils.text_image_preprocessing to transform black and white X into distance-based X.
   - Concatenate distance-based X with Y as the format of images in `../data/style/` and copy the result to `../data/style/`.
 
